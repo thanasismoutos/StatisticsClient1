@@ -13,7 +13,9 @@ public class StatisticsClient {
 			help();
 		} else if (args[0].equals("-list")) {
 			try {
-				Class.forName(driver);
+				String connectionURL = "jdbc:mysql://localhost:3306/page_visits?serverTimezone=UTC"; 
+				Connection connection = StatisticsDB; 
+				Class.forName("com.mysql.cj.jdbc.Driver").newInstance(); 
 				Connection conn = DriverManager.getConnection(connURL, connUser, connPasswd);
 
 				/*
@@ -52,7 +54,9 @@ public class StatisticsClient {
 		} else if (args[0].equals("-clear")) {
 			try {
 				// obtain a connection to the DB, use DB driver, URL, credentials
-				Class.forName(driver);
+				String connectionURL = "jdbc:mysql://localhost:3306/page_visits?serverTimezone=UTC"; 
+				Connection connection = StatisticsDB; 
+				Class.forName("com.mysql.cj.jdbc.Driver").newInstance(); 
 				Connection conn = DriverManager.getConnection(connURL, "root", "root");
 
 				Statement stmt = conn.createStatement();
